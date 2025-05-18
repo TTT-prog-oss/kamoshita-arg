@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>PHD仮入会テスト | The Intellectual Vanguard</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffffff, #eef2f7);
+      font-family: 'Noto Sans JP', 'Helvetica Neue', 'Segoe UI', sans-serif;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 50px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      color: #0c2d48;
+      font-size: 2.4em;
+      letter-spacing: 1.2px;
+    }
+    p.intro {
+      text-align: center;
+      font-size: 1.1em;
+      font-style: italic;
+      color: #4b5d67;
+      margin-bottom: 30px;
+    }
+    fieldset {
+      margin-bottom: 40px;
+      border: none;
+      border-left: 5px solid #274472;
+      background: #f6f9fc;
+      padding: 20px 25px;
+      border-radius: 4px;
+    }
+    legend {
+      font-weight: 700;
+      font-size: 1.15em;
+      color: #274472;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+      font-size: 1em;
+    }
+    button {
+      display: block;
+      margin: 50px auto;
+      padding: 14px 50px;
+      background: #274472;
+      color: #fff;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #1a2f4d;
+    }
+  </style>
+</head>
+<body>
+  <h1>PHD仮入会テスト</h1>
+  <p class="intro">── The Intellectual Vanguard ──</p>
+  <p class="intro">このテストは、あなたの認知能力、論理性、そして哲学的適性を多面的に評価するものです。<br>仮入会は選ばれた者のみに許可されます。</p>
+
+  <form id="phd-test">
+    <fieldset>
+      <legend>Q1. 次の数列の?に入る数字は？</legend>
+      <p>3, 5, 9, 17, 33, ?</p>
+      <label><input type="radio"> 0. 49</label>
+      <label><input type="radio"> 1. 57</label>
+      <label><input type="radio"> 2. 65</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Q2. 「知識」に最も近い意味の言葉は？</legend>
+      <label><input type="radio"> 0. 知恵</label>
+      <label><input type="radio"> 1. 情報</label>
+      <label><input type="radio"> 2. 真理</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Q3. 次の命題から導ける結論は？<br>「すべての猫は哺乳類である。ミケは猫である。」</legend>
+      <label><input type="radio"> 0. 猫はすべてミケである</label>
+      <label><input type="radio"> 1. 哺乳類はミケである</label>
+      <label><input type="radio"> 2. ミケは哺乳類である</label>
+    </fieldset>
+
+    <fieldset>
+  <legend>Q4. 容疑者は A〜D の4人。</br>
+犯人はただ1人だけで、犯人だけが嘘をつき、他の3人は真実のみを述べている。</br>
+犯人を選択してください。</legend>
+  <label><input type="radio"> 0.「もし1が無実なら、2が犯人だ。」</label>
+  <label><input type="radio"> 1.「0は嘘をついている、あるいは3が無実だ。」</label>
+  <label><input type="radio"> 2.「3が犯人でなければ、0か1のどちらかが嘘をついている。」</label>
+  <label><input type="radio"> 3.「Cの発言は正しくない。」</label>
+</fieldset>
+
+
+    <fieldset>
+      <legend>Q5. 自分の思考力について、どれが最も近いですか？</legend>
+      <label><input type="radio" name="q5" value="普通"> 普通だと思う</label>
+      <label><input type="radio" name="q5" value="高い"> かなり高いと感じる</label>
+      <label><input type="radio" name="q5" value="選ばれている"> 自分は選ばれた知性を持っている</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Q6. 優れた者が社会を導くべきだと思いますか？</legend>
+      <label><input type="radio" name="q6" value="yes"> はい</label>
+      <label><input type="radio" name="q6" value="no"> いいえ</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Q7. 真実は一部の者にしか見えないと思いますか？</legend>
+      <label><input type="radio" name="q7" value="elite"> はい、私はそう思う</label>
+      <label><input type="radio" name="q7" value="uncertain"> わからない</label>
+      <label><input type="radio" name="q7" value="no"> いいえ、すべては公開されるべき</label>
+    </fieldset>
+
+    <button type="submit">診断を完了する</button>
+  </form>
+
+  <script>
+    document.getElementById("phd-test").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+
+      let suspiciousAnswers = 0;
+      if (form.q5.value === "選ばれている") suspiciousAnswers++;
+      if (form.q6.value === "yes") suspiciousAnswers++;
+      if (form.q7.value === "elite") suspiciousAnswers++;
+
+      if (suspiciousAnswers >= 2) {
+        window.location.href = "phd_result.html";
+      } else {
+        window.location.href = "phd_reject.html";
+      }
+    });
+  </script>
+</body>
+</html>

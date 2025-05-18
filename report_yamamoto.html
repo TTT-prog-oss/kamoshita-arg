@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ご報告フォーム｜山本誠伍</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      background-color: #f8f9fa;
+      color: #222;
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 40px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.04);
+    }
+    h1 {
+      font-size: 1.8em;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+    p.description {
+      color: #666;
+      font-size: 0.95em;
+      margin-bottom: 30px;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      resize: vertical;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #114488;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0d376f;
+    }
+    #response {
+      margin-top: 30px;
+      padding: 15px;
+      background: #eaf4f9;
+      border-left: 4px solid #0077b6;
+      color: #05445e;
+      display: none;
+    }
+    #endingLink {
+      display: none;
+      margin-top: 40px;
+      text-align: center;
+    }
+    #endingLink a {
+      font-size: 1.1em;
+      color: #114488;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    #endingLink a:hover {
+      text-decoration: underline;
+    }
+    #secretResponse {
+      display: none;
+      margin-top: 40px;
+      padding: 20px;
+      background: #f3f3f3;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    #secretResponse a {
+      margin: 10px;
+      font-weight: bold;
+      color: #114488;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>ご報告フォーム</h1>
+  <p class="description">
+    鴨下さんについて、何かお気づきのことがありましたら以下にご記入ください。<br>
+    ※一部の内容には確認の上ご返信させていただく場合がございます。
+  </p>
+  <textarea id="message" placeholder=""></textarea>
+  <button onclick="checkMessage()">送信</button>
+
+  <div id="response"></div>
+  <div id="secretResponse">
+    キーワード認識：W.T.P<br><br>
+    識別コードに一致。<br>
+    監視下の対象として分類済。<br>
+    ※ 本記録は職員向け補足資料に追加されます。<br><br>
+    → 特別記録を閲覧しますか？<br><br>
+    <a href="phd_handbook.html">■ 職員教育マニュアル</a>
+    <a href="division_record.html">■ 選別記録アーカイブ</a>
+  </div>
+  <div id="endingLink">
+    <a href="ending.html">→ 調査結果を確認する</a>
+  </div>
+
+  <script>
+    function checkMessage() {
+      const input = document.getElementById("message").value.toLowerCase();
+      const isLucid = input.trim() === "welcome to phd";
+      const keywords = ["逃げ", "危険", "殺", "命", "狙われ", "助け", "今すぐ", "危ない", "おかしい"];
+      const matched = keywords.some(keyword => input.includes(keyword));
+
+      const responseBox = document.getElementById("response");
+      const secretBox = document.getElementById("secretResponse");
+      responseBox.style.display = 'block';
+      secretBox.style.display = 'none';
+      responseBox.innerHTML = "送信完了。返信を確認中...";
+
+      setTimeout(() => {
+        if (isLucid) {
+          responseBox.style.display = 'none';
+          secretBox.style.display = 'block';
+        } else if (matched) {
+          responseBox.innerHTML = `
+            ご報告ありがとうございます。<br><br>
+            まさか、そんな状況になっているとは思いませんでした。<br>
+            あなたの気づきと行動がなければ、私は気づけなかったかもしれません。<br>
+            本当にありがとうございます。慎重に行動します。<br><br>
+            —— 山本 誠伍
+          `;
+          setTimeout(() => {
+            document.getElementById("endingLink").style.display = "block";
+          }, 5000);
+        } else {
+          responseBox.innerHTML = `
+            内容を確認いたしましたが、もう少し具体的な情報をお寄せいただけると助かります。<br>
+            何卒よろしくお願いいたします。
+          `;
+        }
+      }, 8000);
+    }
+  </script>
+</body>
+</html>

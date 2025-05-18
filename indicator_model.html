@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>階層指標モデル | PHD指標データベース</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', 'Segoe UI', sans-serif;
+      background: #f4f7fa;
+      color: #1e1e1e;
+    }
+    .container {
+      max-width: 880px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      padding: 60px;
+    }
+    h1, h2 {
+      color: #1a2d5a;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 1.4em;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      border-left: 4px solid #1a2d5a;
+      padding-left: 10px;
+    }
+    p {
+      line-height: 1.8;
+      font-size: 1.05em;
+      margin-bottom: 20px;
+    }
+    .model-ui {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f0f4f9;
+      border: 1px solid #ccd5e0;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    select, button {
+      padding: 8px 12px;
+      font-size: 1em;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+    #resultBox {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #1a2d5a;
+    }
+    .tier-card {
+      background: #f9fbfd;
+      border: 1px solid #d0d8e0;
+      border-left: 6px solid #1a2d5a;
+      border-radius: 6px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+    }
+    .tier-title {
+      font-weight: bold;
+      color: #1a2d5a;
+      margin-bottom: 8px;
+    }
+    .back-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.95em;
+      color: #1a2d5a;
+    }
+    .back-link a {
+      color: #1a2d5a;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+    .back-link img {
+      width: 80px;
+      height: auto;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>階層指標モデル：知性の対数分布とその実装</h1>
+    <p>
+      このページでは、PHD内部で採用されている階層指標モデルに基づいて、
+      仮想的な認知特性スコアから知性階層の評価を体験していただけます。
+      本モデルは、抽象処理速度・倫理的意思決定・記憶再構成能力などを統合した指標により構成されており、
+      知性の分布は自然界に見られる情報伝達効率と同様、対数的な傾向を示すとされています。
+    </p>
+
+    <div class="model-ui">
+      <label for="score">認知特性スコア（数字）を選択してください：</label>
+      <select id="score">
+        <option value="60">60 未満</option>
+        <option value="75">75</option>
+        <option value="85">85</option>
+        <option value="95">95</option>
+        <option value="105">105</option>
+        <option value="115">115</option>
+        <option value="125">125</option>
+        <option value="135">135 以上</option>
+      </select>
+      <button onclick="evaluateScore()">階層を確認する</button>
+      <div id="resultBox"></div>
+    </div>
+
+    <h2>階層構造の定義</h2>
+    <div class="tier-card">
+      <div class="tier-title">観察対象外</div>
+      <p>認知特性における構造的優位が確認されておらず、PHD内での評価対象とはなりません。</p>
+    </div>
+    <div class="tier-card">
+      <div class="tier-title">一般層</div>
+      <p>標準的な社会適応力を有しますが、内的構造の複雑性は低いため、限定的アクセス権に留まります。</p>
+    </div>
+    <div class="tier-card">
+      <div class="tier-title">準上位層</div>
+      <p>高度な抽象性への反応は限定的ながら、倫理的評価においては高い傾向が確認されます。仮会員候補に該当します。</p>
+    </div>
+    <div class="tier-card">
+      <div class="tier-title">上位層</div>
+      <p>知的転移能力に優れ、再構成的認知を伴う判断において高い一致度を示します。本会員への推薦対象。</p>
+    </div>
+    <div class="tier-card">
+      <div class="tier-title">特異知性層</div>
+      <p>自己内観性・長期的再構成思考・社会的透明判断力の全てにおいて顕著な偏差値を持ち、実験的プロジェクト参加候補に分類されます。</p>
+    </div>
+
+    <h2>構成指標の解説</h2>
+    <p><strong>抽象処理速度</strong>：非具体的概念の操作や応用展開の速度。</p>
+    <p><strong>倫理的意思決定</strong>：利害関係を含む選択肢において、内的一貫性と長期影響を加味した選択を行う傾向。</p>
+    <p><strong>記憶再構成能力</strong>：過去経験を構造的に再編成し、新たな意味体系を導出する力。</p>
+
+    <h2>理論背景と参考文献（内部資料）</h2>
+    <p>
+      本指標モデルは「PHD認知構造理論（2023改訂版）」および「集団配置型知能評価草案（別所監修）」に基づいて策定されています。
+      また、分布特性は非対称ロジスティック関数とベイズ確率遷移によって定義されています。
+    </p>
+
+    <h2>昇格・再評価に関する補足</h2>
+    <p>
+      仮会員は、外部行動ログ・内部閲覧パターン・匿名倫理投票結果により、段階的なスコア再評価が行われます。<br>
+      再評価スケジュールは非公開アルゴリズム（PHD v4.1）により決定され、該当者には自動で通知が送られます。
+    </p>
+    
+
+    <div class="back-link">
+      <a href="phd_member.html">← 仮会員ページへ戻る</a>
+      <img src="assets/PHD.png" alt="PHDロゴ">
+ <div class="footer">
+      <p style="text-align:center; color: #999999;">
+ Seek the scripture born of the Revealed Year. From its title, extract the crowned letters—only then shall the Gate of Lucidity unseal itself
+    </div>
+  </main>
+</body>
+</html>
+
+    </div>
+  </div>
+
+  <script>
+    function evaluateScore() {
+      const score = parseInt(document.getElementById("score").value);
+      let result = "";
+
+      if (score < 75) {
+        result = "階層：観察対象外 – 特性の発現が確認されておりません。";
+      } else if (score < 95) {
+        result = "階層：一般層 – 社会適応は可能ですが、内部アクセス権限は付与されません。";
+      } else if (score < 115) {
+        result = "階層：準上位層 – 仮会員としての素質を一部備えています。";
+      } else if (score < 130) {
+        result = "階層：上位層 – 仮会員認定対象。再評価により本会員資格が検討されます。";
+      } else {
+        result = "階層：特異知性層 – 高度思考誘導領域へ進む準備が整っています。";
+      }
+
+      document.getElementById("resultBox").innerText = result;
+    }
+  </script>
+</body>
+</html>

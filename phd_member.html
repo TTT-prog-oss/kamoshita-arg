@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>PHD 仮会員ポータル | The Intellectual Vanguard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #eef3f8, #ffffff);
+      color: #1e1e1e;
+    }
+    .hero {
+      position: relative;
+      background: url('/assets/top.png') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 80, 100, 0.55);
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+      z-index: 0;
+    }
+    .hero-content {
+      z-index: 1;
+      padding: 20px;
+    }
+    .hero-content h1 {
+      font-size: 2.2em;
+      font-weight: 600;
+      margin-bottom: 0.5em;
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      margin: 0;
+    }
+    main {
+      max-width: 960px;
+      margin: -40px auto 60px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+      padding: 60px;
+    }
+    main h2 {
+      text-align: center;
+      font-size: 2em;
+      color: #1a1a1a;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    p.intro {
+      text-align: center;
+      font-size: 1.15em;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 50px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 20px;
+    }
+    li {
+      background: #fff;
+      border: 1px solid #d0d8e0;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      transition: transform 0.2s ease;
+    }
+    li:hover {
+      transform: translateY(-3px);
+    }
+    li.locked {
+      opacity: 0.5;
+      border-style: dashed;
+    }
+    li.locked::after {
+      content: "（本会員限定）";
+      float: right;
+      font-style: italic;
+      color: #888;
+    }
+    li strong a {
+      color: #1a2d5a;
+      text-decoration: none;
+    }
+    li strong a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.95em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>知性が、社会を再構築する</h1>
+      <p>知の選別はすでに始まっている。</p>
+    </div>
+  </div>
+
+  <main>
+    <h2>PHD 仮会員ポータル</h2>
+    <p class="intro">
+      ようこそ、未来を定義する者のための知性ネットワークへ。<br>
+      PHDは、認知構造・論理形式・抽象思考の卓越性に基づき、社会構造の次なる相を描いています。
+    </p>
+
+    <ul>
+      <li><strong><a href="bessho_philosophy.html">別所雄市の理念</a></strong><br>「認知特性階層と行動倫理：分化された社会の輪郭」より</li>
+      <li><strong><a href="indicator_model.html">階層指標モデル：知性の対数分布とその実装</a></strong><br>あなたの位置づけと、仮会員が到達可能な最大レベルに関する内部資料</li>
+      <li class="locked"><strong>思考訓練アルゴリズム v2.1</strong></li>
+      <li class="locked"><strong>再評価制度と非公開テスト告知</strong></li>
+      <li class="locked"><strong>次回限定フォーラム「構造知と再帰性」参加案内</strong></li>
+    </ul>
+
+    <div class="footer">
+      会員ID: #PHD-7X2E-【仮】 ｜ 認知評価：進行中 ｜ フォーラムアクセス：制限あり
+	<p style="text-align:center;">
+      <img src="assets/PHD.png" alt="PHDロゴ" style="max-width:300px; margin: 20px 0;">
+<p style="font-size: 0.8em; text-align: center;">
+  <a href="gate.html" style="color: #FFFFFF;">gate</a>
+</p>
+
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン | 鴨下孝史の記録</title>
+  <style>
+    body {
+      background-color: #f6f6f6;
+      font-family: 'Courier New', monospace;
+      color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: #fff;
+      padding: 40px 30px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    .error {
+      color: #c00;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+
+    .hint {
+      margin-top: 20px;
+      font-size: 0.85em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>ログイン</h2>
+    <form onsubmit="login(); return false;">
+      <input type="text" id="username" placeholder="ユーザー名">
+      <input type="password" id="password" placeholder="パスワード">
+      <button type="submit">ログイン</button>
+      <div id="error-message" class="error"></div>
+      <div id="hint" class="hint" style="display:none;">
+        パスワードのヒント：<br>信念（3語）／すべて小文字・つなげる形式
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim().toLowerCase();
+
+      const correctUser = "PHD_TK"; //
+      const correctPass = "transcendthefilth";
+
+      if (user === correctUser && pass === correctPass) {
+        window.location.href = "record00.html";
+      } else {
+        document.getElementById("error-message").textContent = "ユーザー名またはパスワードが正しくありません。";
+        document.getElementById("hint").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

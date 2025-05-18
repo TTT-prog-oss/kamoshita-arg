@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>The GATE</title>
+  <style>
+    body {
+      background: #111;
+      color: #ccc;
+      font-family: 'Yu Mincho', serif;
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 30px;
+      border: 1px solid #333;
+      border-radius: 10px;
+      text-align: center;
+    }
+    h1 {
+      color: #fff;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      line-height: 1.6em;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1.1em;
+      width: 80%;
+      border: 1px solid #555;
+      background-color: #222;
+      color: #eee;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #444;
+      color: #eee;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #666;
+    }
+    .error {
+      color: #e44;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>門は、まだ閉ざされている</h1>
+  <p>
+    導かれし年に刻まれた“聖典”<br>
+    その題名に戴冠された文字を、今ここで唱えよ。<br>
+    正しき言葉だけが、封印を解く。
+  </p>
+
+  <form onsubmit="checkCode(); return false;">
+    <input type="text" id="codeInput" placeholder="聖なる言葉を入力">
+    <br>
+    <button type="submit">門を開く</button>
+  </form>
+
+  <div class="error" id="errorMessage"></div>
+
+  <script>
+    function checkCode() {
+      const input = document.getElementById("codeInput").value.trim().toLowerCase();
+      if (input === "lucidity") {
+        window.location.href = "lucidity.html";
+      } else {
+        document.getElementById("errorMessage").innerText = "門は、あなたの言葉を拒んだ。";
+      }
+    }
+  </script>
+</body>
+</html>
